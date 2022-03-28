@@ -61,6 +61,3 @@ class TestNotLoggedIn:
     def test_logout_not_logged_in(self, client):
         response = client.get("/logout")
         assert response.status_code == 302  # because redirect to index
-
-
-# TODO values in showsummary clubs and competitions
