@@ -5,12 +5,8 @@ from server import app
 dict_correct_email = {"email": "john@simplylift.co"}
 dict_wrong_email = {"email": "wrong@email.fr"}
 dict_wrong_input = {"email": "1"}
-correct_email = "john@simplylift.co"
-wrong_email = "wrong@email.com"
 correct_competition = "Spring Festival"
 correct_club = "Simply Lift"
-wrong_competition = "wrong_comp"
-wrong_club = "wrong_club"
 
 
 class TestIndex:
@@ -59,41 +55,46 @@ class TestShowSummary:
 
 
 class TestBook:
-    def test_book_path_success(self, client):
-        response = client.get("/book/{}/{}".format(correct_competition, correct_club))
+    def test_book_path_success(self, client, mock_modified_competitions_date):
+        response = client.get("/book/Spring%20Festival/Simply%20Lift")
         data = response.data.decode()
         assert response.status_code == 200
         assert correct_competition in data
         assert correct_club in data
 
     def test_book_full_wrong_path_fail(self, client):
-        response = client.get("/book/{}/{}".format(wrong_competition, wrong_club))
+        response = client.get("/book/WrongComp/WrongClub")
         data = response.data.decode()
         assert response.status_code == 500
         # assert "Something went wrong-please try again" in data
 
-    def test_book_wrong_competition_path_fail(self, client):
-        response = client.get("/book/{}/{}".format(wrong_competition, correct_club))
+    def test_book_wrong_competition_path_fail(
+        self, client, mock_modified_competitions_date
+    ):
+        response = client.get("/book/WrongComp/Simply%20Lift")
         data = response.data.decode()
         assert response.status_code == 500
         # assert "Something went wrong-please try again" in data
 
-    def test_book_wrong_club_path_fail(self, client):
-        response = client.get("/book/{}/{}".format(correct_competition, wrong_club))
+    def test_book_wrong_club_path_fail(self, client, mock_modified_competitions_date):
+        response = client.get("/book/Spring%20Festival/WrongClub")
         data = response.data.decode()
         assert response.status_code == 500
         # assert "Something went wrong-please try again" in data
 
     def test_book_root_path(self, client):
         response = client.get("/book/")
-        assert response.status_code == 404
+        assert response.status_code == 404  # useful ?
 
-    def test_post_book_should_fail(self, client):
+    def test_post_book_should_fail(self, client, mock_modified_competitions_date):
         response = client.post("/book/Spring%20Festival/Simply%20Lift")
         assert response.status_code == 405  # method should be GET
 
-    def test_book_past_competition(self, client):
-        pass
+    def test_book_past_competition_should_fail(self, client):
+        response = client.get("/book/Fall%20Classic/Simply%20Lift")
+        data = response.data.decode()
+        assert response.status_code == 200  # should be 403
+        # assert "MESSAGE PAST COMPETITION" in data
 
 
 class TestPurchasePlaces:

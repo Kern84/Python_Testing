@@ -1,4 +1,5 @@
 import pytest
+import server
 from server import app
 
 
@@ -39,3 +40,20 @@ def competitions_loaded():
         {"name": "Fall Classic", "date": "2020-10-22 13:30:00", "numberOfPlaces": "13"},
     ]
     return competitions
+
+
+def modified_competitions_date():
+    competitions = [
+        {
+            "name": "Spring Festival",
+            "date": "2023-03-27 10:00:00",
+            "numberOfPlaces": "25",
+        },
+        {"name": "Fall Classic", "date": "2020-10-22 13:30:00", "numberOfPlaces": "13"},
+    ]
+    return competitions
+
+
+@pytest.fixture
+def mock_modified_competitions_date(mocker):
+    mocker.patch.object(server, "competitions", modified_competitions_date())
