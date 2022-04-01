@@ -5,22 +5,14 @@ from server import app
 
 @pytest.fixture
 def client():
+    """Create a test browser."""
     client = app.test_client()
     yield client
 
 
 @pytest.fixture
-def list_club_email():
-    list_club_email = [
-        "john@simplylift.co",
-        "admin@irontemple.com",
-        "kate@shelifts.co.uk",
-    ]
-    return list_club_email
-
-
-@pytest.fixture
 def clubs_loaded():
+    """Copy of a JSON file. Used for comparison."""
     clubs = [
         {"name": "Simply Lift", "email": "john@simplylift.co", "points": "13"},
         {"name": "Iron Temple", "email": "admin@irontemple.com", "points": "4"},
@@ -31,6 +23,7 @@ def clubs_loaded():
 
 @pytest.fixture
 def competitions_loaded():
+    """Copy of a JSON file. Used for comparison."""
     competitions = [
         {
             "name": "Spring Festival",
@@ -43,6 +36,7 @@ def competitions_loaded():
 
 
 def modified_competitions_date():
+    """Copy of the original competitions, with a difference of date for the first."""
     competitions = [
         {
             "name": "Spring Festival",
@@ -55,6 +49,7 @@ def modified_competitions_date():
 
 
 def modified_full_competitions():
+    """Copy of the original competitions, with no available places and a difference of date for the first."""
     competitions = [
         {
             "name": "Spring Festival",
@@ -68,9 +63,11 @@ def modified_full_competitions():
 
 @pytest.fixture
 def mock_modified_competitions_date(mocker):
+    """Mocking the original variable with our changes. Here, the date."""
     mocker.patch.object(server, "competitions", modified_competitions_date())
 
 
 @pytest.fixture
 def mock_modified_full_competitions(mocker):
+    """Mocking the original variable with our changes. Here, the number of available places and date."""
     mocker.patch.object(server, "competitions", modified_full_competitions())
