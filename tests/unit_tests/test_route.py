@@ -226,4 +226,13 @@ class TestLogout:
         assert response.status_code == 302
 
 
-# TODO display points ???
+class TestDisplayPoints:
+    def test_dispay_clubs_points_sucess(self, client):
+        response = client.get("/displayPoints")
+        data = response.data.decode()
+        assert response.status_code == 200
+        assert "List of clubs" in data
+
+    def test_post_display_clubs_points_should_fail(self, client):
+        response = client.post("/displayPoints")
+        assert response.status_code == 405
