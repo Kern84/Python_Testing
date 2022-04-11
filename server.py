@@ -62,7 +62,10 @@ def purchasePlaces():
     placesRequired = int(request.form["places"])
     competition["numberOfPlaces"] = int(competition["numberOfPlaces"]) - placesRequired
     flash("Great-booking complete!")
+    print(render_template("welcome.html", club=club, competitions=competitions))
     return render_template("welcome.html", club=club, competitions=competitions)
+
+    # TODO confirm number of places taken ; message if competition is full
 
 
 # TODO: Add route for points display
