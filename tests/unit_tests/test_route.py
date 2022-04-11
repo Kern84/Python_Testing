@@ -43,7 +43,7 @@ class TestShowSummary:
         response = client.post("/showSummary", data=dict(dict_wrong_email))
         data = response.data.decode()
         assert response.status_code == 200
-        assert "Sorry, that email wasn't found, please try again." in data
+        assert "Sorry, that email" in data
 
     def test_login_wrong_input_should_fail(self, client):
         """
@@ -54,7 +54,7 @@ class TestShowSummary:
         response = client.post("/showSummary", data=dict(dict_wrong_input))
         data = response.data.decode()
         assert response.status_code == 200
-        assert "Sorry, that email wasn't found, please try again." in data
+        assert "Sorry, that email" in data
 
     def test_login_no_input_should_fail(self, client):
         """
@@ -65,7 +65,7 @@ class TestShowSummary:
         response = client.post("/showSummary", data={"email": ""})
         data = response.data.decode()
         assert response.status_code == 200
-        assert "Sorry, that email wasn't found, please try again." in data
+        assert "Sorry, that email" in data
 
     def test_get_show_summary_should_fail(self, client):
         """
