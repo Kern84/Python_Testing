@@ -52,12 +52,16 @@ def purchasePlaces():
     ]
     club = [c for c in clubs if c["name"] == request.form["club"]][0]
     placesRequired = int(request.form["places"])
-    competition["numberOfPlaces"] = int(competition["numberOfPlaces"]) - placesRequired
-    flash("Great-booking complete!")
-    return render_template("welcome.html", club=club, competitions=competitions)
 
-
-# TODO: Add route for points display
+    if placesRequired > 0 and placesRequired <= 12:
+        competition["numberOfPlaces"] = (
+            int(competition["numberOfPlaces"]) - placesRequired
+        )
+        flash("Great-booking complete!")
+        return render_template("welcome.html", club=club, competitions=competitions)
+    else:
+        flash("You must register a positive number of places (between 1 and 12)")
+        return render_template("booking.html", club=club, competition=competition)
 
 
 @app.route("/logout")
