@@ -20,6 +20,8 @@ app.secret_key = "something_special"
 competitions = loadCompetitions()
 clubs = loadClubs()
 
+place_points = 1
+
 
 @app.route("/")
 def index():
@@ -53,7 +55,7 @@ def purchasePlaces():
     club = [c for c in clubs if c["name"] == request.form["club"]][0]
     placesRequired = int(request.form["places"])
 
-    if int(club["points"]) >= (3 * placesRequired):
+    if int(club["points"]) >= (placesRequired * place_points):
         competition["numberOfPlaces"] = (
             int(competition["numberOfPlaces"]) - placesRequired
         )
