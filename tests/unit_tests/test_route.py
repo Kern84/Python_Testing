@@ -284,7 +284,7 @@ class TestPurchasePlaces:
         Test the purchasePlaces path,
         with POST and a correct club, competition and places,
         it should return a 200 HTTP code (OK),
-        the response should contain some text and the competition should have a reduction of it's available places.
+        the response should contain some text and the club should have a reduction of it's points.
         """
         response = client.post(
             "/purchasePlaces",
@@ -296,6 +296,7 @@ class TestPurchasePlaces:
         )
         expected_value = 10
         data = response.data.decode()
+        print("BBBB", data)
         assert response.status_code == 200
         assert "Points available: {}".format(expected_value) in data
 
@@ -306,17 +307,17 @@ class TestPurchasePlaces:
         Test the purchasePlaces path,
         with POST and a correct club, competition and places,
         it should return a 200 HTTP code (OK),
-        the response should contain some text and the club should have a reduction of it's points.
+        the response should contain some text and the competition should have a reduction of it's available places.
         """
         response = client.post(
             "/purchasePlaces",
             data={
                 "competition": correct_competition,
                 "club": correct_club,
-                "places": 5,
+                "places": 1,
             },
         )
-        expected_value = 20
+        expected_value = 24
         data = response.data.decode()
         assert response.status_code == 200
         assert "Number of Places: {}".format(expected_value) in data
