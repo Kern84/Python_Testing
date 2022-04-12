@@ -55,7 +55,10 @@ def purchasePlaces():
     competition["numberOfPlaces"] = int(competition["numberOfPlaces"]) - placesRequired
     club["points"] = int(club["points"]) - (placesRequired * 3)
     flash("Great-booking complete!")
+    print(render_template("welcome.html", club=club, competitions=competitions))
     return render_template("welcome.html", club=club, competitions=competitions)
+
+    # TODO confirm number of places taken ; message if competition is full
 
 
 @app.route("/logout")
