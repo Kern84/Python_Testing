@@ -20,6 +20,8 @@ app.secret_key = "something_special"
 competitions = loadCompetitions()
 clubs = loadClubs()
 
+point_place = 3
+
 
 @app.route("/")
 def index():
