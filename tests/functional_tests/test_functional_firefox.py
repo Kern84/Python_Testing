@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def test_user_experience_firefox(mock_modified_competitions_date):
+def test_user_experience_firefox():
     """
     Function to test the user experience.
     Go to the site index page;
@@ -38,7 +38,7 @@ def test_user_experience_firefox(mock_modified_competitions_date):
 
     driver.find_element(By.NAME, "email").send_keys("wrong@email.fr" + Keys.RETURN)
     WebDriverWait(driver, timeout=1).until(EC.title_contains("GUDLFT"))
-    assert "Sorry, that email wasn't found." in driver.page_source
+    assert "Sorry, that email" in driver.page_source
 
     driver.find_element(By.NAME, "email").send_keys("john@simplylift.co" + Keys.RETURN)
     WebDriverWait(driver, timeout=1).until(EC.title_contains("Summary"))
@@ -59,7 +59,7 @@ def test_user_experience_firefox(mock_modified_competitions_date):
     assert "Booking for" in driver.title
 
     register_places = driver.find_element(By.NAME, "places")
-    register_places.send_keys("4")
+    register_places.send_keys("1")
     validate_choice = driver.find_element(By.TAG_NAME, "button")
     validate_choice.click()
     WebDriverWait(driver, timeout=1).until(EC.title_contains("Summary"))

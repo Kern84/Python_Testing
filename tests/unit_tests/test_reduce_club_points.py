@@ -16,7 +16,7 @@ def test_purchase_places_should_reduce_club_points(
         data={
             "competition": correct_competition,
             "club": correct_club,
-            "places": 3,
+            "places": 1,
         },
     )
     expected_value = 10
