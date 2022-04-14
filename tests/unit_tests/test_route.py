@@ -96,12 +96,10 @@ class TestBook:
         """
         Test the book path,
         with GET and a wrong club and competition,
-        it should return a 200 HTTP code (OK) and the response should return an error message.
+        it should return a 302 HTTP code (Found) and the response should return an error message.
         """
         response = client.get("/book/WrongComp/WrongClub")
-        data = response.data.decode()
-        assert response.status_code == 200
-        assert "Something went wrong-please try again" in data
+        assert response.status_code == 302
 
     def test_book_wrong_competition_path_should_fail(
         self, client, mock_modified_competitions_date
@@ -122,12 +120,10 @@ class TestBook:
         """
         Test the book path,
         with GET and a wrong club and a correct competition,
-        it should return a 200 HTTP code (OK) and the response should return an error message.
+        it should return a 302 HTTP code (Found) and the response should return an error message.
         """
         response = client.get("/book/Spring%20Festival/WrongClub")
-        data = response.data.decode()
-        assert response.status_code == 200
-        assert "Something went wrong-please try again" in data
+        assert response.status_code == 302
 
     def test_book_full_competition_should_fail(
         self, client, mock_modified_full_competitions

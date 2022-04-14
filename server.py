@@ -1,5 +1,6 @@
 import json
 from flask import Flask, render_template, request, redirect, flash, url_for
+from datetime import datetime
 
 
 def loadClubs():
@@ -36,15 +37,41 @@ def showSummary():
 
 @app.route("/book/<competition>/<club>")
 def book(competition, club):
-    foundClub = [c for c in clubs if c["name"] == club][0]
-    foundCompetition = [c for c in competitions if c["name"] == competition][0]
+    try:
+        foundClub = [c for c in clubs if c["name"] == club][0]
+    except IndexError:
+        foundClub = None
+
+    try:
+        foundCompetition = [c for c in competitions if c["name"] == competition][0]
+    except IndexError:
+        foundCompetition = None
+
     if foundClub and foundCompetition:
+        if foundCompetition["date"] > str(datetime.now()):
+            if int(foundCompetition["numberOfPlaces"]) > 0:
+                flash("Valid competition")
+                return render_template(
+                    "booking.html", club=foundClub, competition=foundCompetition
+                )
+            else:
+                flash("Something went wrong-please try again")
+                return render_template(
+                    "welcome.html", club=foundClub, competitions=competitions
+                )
+        else:
+            flash("You cannot book places for a past competition")
+            return render_template(
+                "welcome.html", club=foundClub, competitions=competitions
+            )
+    elif foundClub:
+        flash("Something went wrong-please try again")
         return render_template(
-            "booking.html", club=foundClub, competition=foundCompetition
+            "welcome.html", club=foundClub, competitions=competitions
         )
     else:
         flash("Something went wrong-please try again")
-        return render_template("welcome.html", club=club, competitions=competitions)
+        return redirect(url_for("index"))
 
 
 @app.route("/purchasePlaces", methods=["POST"])
