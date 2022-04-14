@@ -313,10 +313,10 @@ class TestPurchasePlaces:
             data={
                 "competition": correct_competition,
                 "club": correct_club,
-                "places": 5,
+                "places": 1,
             },
         )
-        expected_value = 20
+        expected_value = 24
         data = response.data.decode()
         assert response.status_code == 200
         assert "Number of Places: {}".format(expected_value) in data
