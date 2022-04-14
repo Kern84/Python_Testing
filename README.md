@@ -1,3 +1,6 @@
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
+
+
 # gudlift-registration
 
 1. Why
@@ -11,7 +14,7 @@
 
     * Python v3.x+
 
-    * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+    * [Flask](https://flask.palletsprojects.com/en/latest/)
 
         Whereas Django does a lot of things for us out of the box, Flask allows us to add only what we need. 
      
@@ -31,7 +34,7 @@
 
     - Rather than hunting around for the packages you need, you can install in one step. Type <code>pip install -r requirements.txt</code>. This will install all the packages listed in the respective file. If you install a package, make sure others know by updating the requirements.txt file. An easy way to do this is <code>pip freeze > requirements.txt</code>
 
-    - Flask requires that you set an environmental variable to the python file. However you do that, you'll want to set the file to be <code>server.py</code>. Check [here](https://flask.palletsprojects.com/en/1.1.x/quickstart/#a-minimal-application) for more details
+    - Flask requires that you set an environmental variable to the python file. However you do that, you'll want to set the file to be <code>server.py</code>. Check [here](https://flask.palletsprojects.com/en/latest/quickstart/#a-minimal-application) for more details
 
     - You should now be ready to test the application. In the directory, type either <code>flask run</code> or <code>python -m flask run</code>. The app should respond with an address you should be able to go to using your browser.
 
@@ -49,3 +52,18 @@
     We also like to show how well we're testing, so there's a module called 
     [coverage](https://coverage.readthedocs.io/en/coverage-5.1/) you should add to your project.
 
+    Run Pytest:
+    ```
+    pytest -v
+    ```
+
+    Test the coverage:
+    ````
+    pytest --cov=. --cov-report html
+    ````
+
+    Test with Locust:
+    ```
+    locust -f tests/performance_tests/locustfile.py
+    ```
+    Go to this adress : http://0.0.0.0:8089/
