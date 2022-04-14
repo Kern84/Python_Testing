@@ -31,8 +31,16 @@ def index():
 
 @app.route("/showSummary", methods=["POST"])
 def showSummary():
-    club = [club for club in clubs if club["email"] == request.form["email"]][0]
-    return render_template("welcome.html", club=club, competitions=competitions)
+    input_email = request.form["email"]
+    list_club_email = []
+    for element in clubs:
+        list_club_email.append(element["email"])
+    if input_email in list_club_email:
+        club = [club for club in clubs if club["email"] == request.form["email"]][0]
+        return render_template("welcome.html", club=club, competitions=competitions)
+    else:
+        flash("Sorry, that email wasn't found, please try again.")
+        return render_template("index.html")
 
 
 @app.route("/book/<competition>/<club>")
