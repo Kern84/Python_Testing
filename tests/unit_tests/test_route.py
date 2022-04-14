@@ -273,28 +273,6 @@ class TestPurchasePlaces:
         assert response.status_code == 200
         assert "You do not have enough points to make this booking" in data
 
-    def test_purchase_places_should_reduce_club_points_success(
-        self, client, mock_modified_competitions_date
-    ):
-        """
-        Test the purchasePlaces path,
-        with POST and a correct club, competition and places,
-        it should return a 200 HTTP code (OK),
-        the response should contain some text and the competition should have a reduction of it's available places.
-        """
-        response = client.post(
-            "/purchasePlaces",
-            data={
-                "competition": correct_competition,
-                "club": correct_club,
-                "places": 3,
-            },
-        )
-        expected_value = 10
-        data = response.data.decode()
-        assert response.status_code == 200
-        assert "Points available: {}".format(expected_value) in data
-
     def test_purchase_places_should_reduce_competition_points_success(
         self, client, mock_modified_competitions_date
     ):
@@ -302,7 +280,7 @@ class TestPurchasePlaces:
         Test the purchasePlaces path,
         with POST and a correct club, competition and places,
         it should return a 200 HTTP code (OK),
-        the response should contain some text and the club should have a reduction of it's points.
+        the response should contain some text and the competition should have a reduction of it's available places.
         """
         response = client.post(
             "/purchasePlaces",
