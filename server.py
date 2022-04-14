@@ -21,7 +21,7 @@ app.secret_key = "something_special"
 competitions = loadCompetitions()
 clubs = loadClubs()
 
-place_points = 1
+place_points = 3
 
 
 @app.route("/")
