@@ -444,3 +444,68 @@ DevTools listening on ws://localhost:50893/devtools/browser/f00c05c4-41b9-4633-b
 1649843094755	Marionette	INFO	Listening on port 50914
 Read port: 50914
 1649843094831	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1649860167722	geckodriver	INFO	Listening on 127.0.0.1:52673
+1649860168147	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52674" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/n5/ssqb_t3d7gnd585d037zx8_r0000gn/T/rust_mozprofilewyqcnQ"
+1649860168397	Marionette	INFO	Marionette enabled
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/n5/ssqb_t3d7gnd585d037zx8_r0000gn/T/rust_mozprofilewyqcnQ/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:52674/devtools/browser/357a5f0f-d086-4ccc-9485-d4bfceac5d07
+1649860169203	Marionette	INFO	Listening on port 52692
+Read port: 52692
+1649860169315	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1649860177136	Marionette	INFO	Stopped listening on port 52692
+1649860317732	geckodriver	INFO	Listening on 127.0.0.1:52755
+1649860318159	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52756" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/n5/ssqb_t3d7gnd585d037zx8_r0000gn/T/rust_mozprofileve1ljP"
+1649860318382	Marionette	INFO	Marionette enabled
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/n5/ssqb_t3d7gnd585d037zx8_r0000gn/T/rust_mozprofileve1ljP/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:52756/devtools/browser/cddddaa3-e5c9-49c0-a43f-9ff97d1003d0
+1649860319147	Marionette	INFO	Listening on port 52777
+Read port: 52777
+1649860319240	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1649860323054	Marionette	INFO	Stopped listening on port 52777
+1649937607812	geckodriver	INFO	Listening on 127.0.0.1:51230
+1649937608240	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51231" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/n5/ssqb_t3d7gnd585d037zx8_r0000gn/T/rust_mozprofilecBHNCx"
+1649937608526	Marionette	INFO	Marionette enabled
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/n5/ssqb_t3d7gnd585d037zx8_r0000gn/T/rust_mozprofilecBHNCx/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:51231/devtools/browser/e8024465-ef73-4164-b4eb-c16589fa7a2a
+1649937609266	Marionette	INFO	Listening on port 51249
+Read port: 51249
+1649937609304	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1649937677588	geckodriver	INFO	Listening on 127.0.0.1:51308
+1649937678025	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51309" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/n5/ssqb_t3d7gnd585d037zx8_r0000gn/T/rust_mozprofileY3T2yz"
+1649937678281	Marionette	INFO	Marionette enabled
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/n5/ssqb_t3d7gnd585d037zx8_r0000gn/T/rust_mozprofileY3T2yz/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:51309/devtools/browser/89e72c5f-f9ed-4669-b26f-6ff5100f6fb5
+1649937679148	Marionette	INFO	Listening on port 51331
+Read port: 51331
+1649937679190	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1649937687222	Marionette	INFO	Stopped listening on port 51331
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+
+1649937965128	geckodriver	INFO	Listening on 127.0.0.1:51399
+1649937965559	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51400" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/n5/ssqb_t3d7gnd585d037zx8_r0000gn/T/rust_mozprofilecwuZNO"
+1649937965787	Marionette	INFO	Marionette enabled
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/n5/ssqb_t3d7gnd585d037zx8_r0000gn/T/rust_mozprofilecwuZNO/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+DevTools listening on ws://localhost:51400/devtools/browser/30298426-8d14-4142-98b0-269939b94780
+1649937966546	Marionette	INFO	Listening on port 51421
+Read port: 51421
+1649937966610	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1649937987169	Marionette	INFO	Stopped listening on port 51421
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+
