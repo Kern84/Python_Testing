@@ -168,7 +168,7 @@ class TestPurchasePlaces:
     """Class where the purchasePlaces function is tested."""
 
     def test_purchase_correct_number_of_places_success(
-        self, client, mock_modified_competitions_date
+        self, client, mock_modified_competitions_date, mock_club
     ):
         """
         Test the purchasePlaces path,
@@ -180,7 +180,7 @@ class TestPurchasePlaces:
             data={
                 "competition": correct_competition,
                 "club": correct_club,
-                "places": 2,
+                "places": "2",
             },
         )
         data = response.data.decode()
@@ -188,7 +188,7 @@ class TestPurchasePlaces:
         assert "Great-booking complete!" in data
 
     def test_purchase_zero_place_should_fail(
-        self, client, mock_modified_competitions_date
+        self, client, mock_modified_competitions_date, mock_club
     ):
         """
         Test the purchasePlaces path,
@@ -200,7 +200,7 @@ class TestPurchasePlaces:
             data={
                 "competition": correct_competition,
                 "club": correct_club,
-                "places": 0,
+                "places": "0",
             },
         )
         data = response.data.decode()
@@ -210,7 +210,7 @@ class TestPurchasePlaces:
         )
 
     def test_purchase_negative_number_of_places_should_fail(
-        self, client, mock_modified_competitions_date
+        self, client, mock_modified_competitions_date, mock_club
     ):
         """
         Test the purchasePlaces path,
@@ -222,7 +222,7 @@ class TestPurchasePlaces:
             data={
                 "competition": correct_competition,
                 "club": correct_club,
-                "places": -2,
+                "places": "-2",
             },
         )
         data = response.data.decode()
@@ -232,7 +232,7 @@ class TestPurchasePlaces:
         )
 
     def test_purchase_too_much_places_should_fail(
-        self, client, mock_modified_competitions_date
+        self, client, mock_modified_competitions_date, mock_club
     ):
         """
         Test the purchasePlaces path,
@@ -244,7 +244,7 @@ class TestPurchasePlaces:
             data={
                 "competition": correct_competition,
                 "club": correct_club,
-                "places": 15,
+                "places": "15",
             },
         )
         data = response.data.decode()
@@ -254,7 +254,7 @@ class TestPurchasePlaces:
         )
 
     def test_purchase_places_with_not_enough_points_should_fail(
-        self, client, mock_modified_competitions_date
+        self, client, mock_modified_competitions_date, mock_club
     ):
         """
         Test the purchasePlaces path,
@@ -266,15 +266,37 @@ class TestPurchasePlaces:
             data={
                 "competition": correct_competition,
                 "club": not_enough_points_club,
-                "places": 8,
+                "places": "8",
             },
         )
         data = response.data.decode()
         assert response.status_code == 200
         assert "You do not have enough points to make this booking" in data
 
+    def test_purchase_places_should_reduce_club_points(
+        self, client, mock_modified_competitions_date, mock_club
+    ):
+        """
+        Test the purchasePlaces path,
+        with POST and a correct club, competition and places,
+        it should return a 200 HTTP code (OK),
+        the response should contain some text and the club should have a reduction of it's points.
+        """
+        response = client.post(
+            "/purchasePlaces",
+            data={
+                "competition": correct_competition,
+                "club": correct_club,
+                "places": "1",
+            },
+        )
+        expected_value = "10"
+        data = response.data.decode()
+        assert response.status_code == 200
+        assert "Points available: {}".format(expected_value) in data
+
     def test_purchase_places_should_reduce_competition_points_success(
-        self, client, mock_modified_competitions_date
+        self, client, mock_modified_competitions_date, mock_club
     ):
         """
         Test the purchasePlaces path,
@@ -287,10 +309,10 @@ class TestPurchasePlaces:
             data={
                 "competition": correct_competition,
                 "club": correct_club,
-                "places": 1,
+                "places": "1",
             },
         )
-        expected_value = 24
+        expected_value = "24"
         data = response.data.decode()
         assert response.status_code == 200
         assert "Number of Places: {}".format(expected_value) in data
