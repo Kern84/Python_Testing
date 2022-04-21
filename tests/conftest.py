@@ -61,6 +61,15 @@ def modified_full_competitions():
     return competitions
 
 
+def clubs_to_mock():
+    clubs = [
+        {"name": "Simply Lift", "email": "john@simplylift.co", "points": "13"},
+        {"name": "Iron Temple", "email": "admin@irontemple.com", "points": "4"},
+        {"name": "She Lifts", "email": "kate@shelifts.co.uk", "points": "12"},
+    ]
+    return clubs
+
+
 @pytest.fixture
 def mock_modified_competitions_date(mocker):
     """Mocking the original variable with our changes. Here, the date."""
@@ -71,3 +80,9 @@ def mock_modified_competitions_date(mocker):
 def mock_modified_full_competitions(mocker):
     """Mocking the original variable with our changes. Here, the number of available places and date."""
     mocker.patch.object(server, "competitions", modified_full_competitions())
+
+
+@pytest.fixture
+def mock_club(mocker):
+    """Mocking the clubs to have the same number of points for each test."""
+    mocker.patch.object(server, "clubs", clubs_to_mock())
